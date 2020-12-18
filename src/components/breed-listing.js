@@ -16,6 +16,14 @@ function BreedListing(props) {
   return (
     <div className="breeds-container">
       <h1>Breeds</h1>
+      <select>
+        <option defaultValue value="A">
+          Show all Dogs
+        </option>
+        <option value="S">Show only Small Dogs</option>
+        <option value="M">Show only Medium Dogs</option>
+        <option value="L">Show only Large Dogs</option>
+      </select>
       {isLoading && (
         <LoadingSpinner
           size="50px"

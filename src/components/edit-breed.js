@@ -13,8 +13,8 @@ function EditBreed(props) {
   const [breedData, isLoading, errorMessage] = useBreed(userId, breedId);
   const [saveBreed, isSaving, formMessage] = useSaveBreed();
 
-  const onBreedSubmit = async (title, rating, releaseYear) => {
-    saveBreed({ title, rating, releaseYear }, userId, breedId);
+  const onBreedSubmit = async (title, rating, origin, size, weight) => {
+    saveBreed({ title, rating, origin, size, weight }, userId, breedId);
   };
 
   return (
@@ -29,7 +29,7 @@ function EditBreed(props) {
       )}
       {errorMessage && <ErrorMessage displayAsCard>{errorMessage}</ErrorMessage>}
       {breedData && (
-        <breedForm
+        <BreedForm
           initialState={breedData}
           onSubmit={onBreedSubmit}
           isSaving={isSaving}

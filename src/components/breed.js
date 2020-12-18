@@ -7,9 +7,9 @@ import "./breed.css";
 
 function Breed(props) {
   const { id, data, userId } = props;
-  const { title, releaseYear, rating, review } = data;
+  const { title, rating, origin, size, weight } = data;
 
-  const ratingString = "💜".repeat(rating) + "🤍".repeat(5 - rating);
+  const ratingString = "🐶".repeat(rating);
 
   const history = useHistory();
   const [isDeleting, setIsDeleting] = useState(false);
@@ -31,10 +31,12 @@ function Breed(props) {
   return (
     <div className="breed">
       <div className="breed__contents">
-        <div className="breed__title">{title}</div>
-        <div className="breed__rating">{ratingString}</div>
-        <div className="breed__year">{releaseYear}</div>
-        <div className="breed__review">{review ? review : "No review saved."}</div>
+        <div className="breed__title">Breed: {title}</div>
+        <div className="breed__rating">Rating: {ratingString}</div>
+        <div className="breed__rating">Origin: {origin}</div>
+        <div className="breed__rating">Weight: {weight}</div>
+        <div className="breed__year">Size: {size}</div>
+
         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
       </div>
       <div>

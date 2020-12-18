@@ -6,9 +6,9 @@ function BreedForm(props) {
   const { initialState = {}, message, isSaving, onSubmit } = props;
 
   if (initialState.title === undefined) initialState.title = "";
-  if (initialState.rating === undefined) initialState.rating = "3";
+  if (initialState.rating === undefined) initialState.rating = "";
   if (initialState.origin === undefined) initialState.origin = "";
-  if (initialState.size === undefined) initialState.size = "";
+  if (initialState.size === undefined) initialState.size = "S";
   if (initialState.weight === undefined) initialState.weight = "";
   //if (initialState.dayPost === undefined) initialState.dayPost = 02/10/2020;
 
@@ -64,13 +64,23 @@ function BreedForm(props) {
         />
 
         <label className="breed-form__label">Origin:</label>
-        <input className="breed-form__input" type="text" value={origin} onChange={onOriginChange} />
-
-        <label className="breed-form__label">Size:</label>
-        <input className="breed-form__input" type="text" value={size} onChange={onSizeChange} />
+        <input
+          className="breed-form__input"
+          type="text"
+          value={origin}
+          onChange={onOriginChange}
+          required
+        />
 
         <label className="breed-form__label">Weight:</label>
         <input className="breed-form__input" type="text" value={weight} onChange={onWeightChange} />
+
+        <label className="breed-form__label">Size:</label>
+        <select className="breed-form__input" value={size} onChange={onSizeChange}>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+        </select>
 
         <input
           className="breed-form__submit"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ErrorMessage from "./error-message";
 import { provider, auth } from "../data/firebase";
 import "./account-info.css";

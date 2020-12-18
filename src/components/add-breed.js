@@ -7,8 +7,8 @@ function AddBreed(props) {
   const userId = props.user.uid;
   const [saveBreed, isSaving, formMessage] = useSaveBreed();
 
-  const onBreedSumbit = async (title, rating, releaseYear) => {
-    saveBreed({ title, rating, releaseYear }, userId);
+  const onBreedSumbit = async (title, rating, origin, size, weight) => {
+    saveBreed({ title, rating, origin, size, weight}, userId);
   };
 
   return (

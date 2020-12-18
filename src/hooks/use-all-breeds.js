@@ -28,7 +28,7 @@ function useAllBreeds(userId) {
       .onSnapshot(onNext, onError);
 
     return unsubscribe;
-  }, []);
+  }, [userId]);
 
   return [breeds, isLoading, errorMessage];
 }

@@ -6,7 +6,7 @@ function BreedsPage(props) {
   return (
     <main>
       <Helmet>
-        <title>breeds</title>
+        <title>Breeds</title>
       </Helmet>
       <BreedListing {...props} />
     </main>
