@@ -19,7 +19,7 @@ function BreedForm(props) {
   const [weight, setWeight] = useState(initialState.weight);
   //const [dayPost, setDayPost] = useState(initialState.dayPost);
   const [errorMessage, setErrorMessage] = useState("");
-
+""
   const onTitleChange = (event) => {
     setTitle(event.target.value);
   };

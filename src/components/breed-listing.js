@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import LoadingSpinner from "./loading-spinner";
 import ErrorMessage from "./error-message";
 import Breed from "./breed";
@@ -11,15 +11,18 @@ import "./breed-listing.css";
 
 function BreedListing(props) {
   const userId = props.user.uid;
-  const [breeds, isLoading, errorMessage] = useAllBreeds(userId);
+  const [filterBreeds, setFilterBreeds] = useState("A");
+  const [breeds, isLoading, errorMessage] = useAllBreeds(userId, filterBreeds);
+
+  const onFilterSubmit = (event) => {
+    setFilterBreeds(event.target.value);
+  };
 
   return (
     <div className="breeds-container">
       <h1>Breeds</h1>
-      <select>
-        <option defaultValue value="A">
-          Show all Dogs
-        </option>
+      <select className="breed-button" value={filterBreeds} onChange={onFilterSubmit}>
+        <option value="A">Show all Dogs</option>
         <option value="S">Show only Small Dogs</option>
         <option value="M">Show only Medium Dogs</option>
         <option value="L">Show only Large Dogs</option>

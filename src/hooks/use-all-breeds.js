@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { usersCollection } from "../data/firebase";
 
-function useAllBreeds(userId) {
+function useAllBreeds(userId, filterBreeds) {
   const [breeds, setBreeds] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -21,14 +21,21 @@ function useAllBreeds(userId) {
       console.error(error);
     };
 
-    const unsubscribe = usersCollection
-      .doc(userId)
-      .collection("breeds")
-      .orderBy("rating", "desc")
-      .onSnapshot(onNext, onError);
+    const breedref = usersCollection.doc(userId).collection("breeds");
+    let unsubscribe;
+
+    if (filterBreeds === "A") {
+      unsubscribe = breedref.orderBy("rating", "desc").onSnapshot(onNext, onError);
+    } else if (filterBreeds === "S") {
+      unsubscribe = breedref.where("size", "==", "S").onSnapshot(onNext, onError);
+    } else if (filterBreeds === "M") {
+      unsubscribe = breedref.where("size", "==", "M").onSnapshot(onNext, onError);
+    } else if (filterBreeds === "L") {
+      unsubscribe = breedref.where("size", "==", "L").onSnapshot(onNext, onError);
+    }
 
     return unsubscribe;
-  }, [userId]);
+  }, [userId, filterBreeds]);
 
   return [breeds, isLoading, errorMessage];
 }
