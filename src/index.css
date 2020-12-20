@@ -4,7 +4,7 @@ html {
   box-sizing: border-box;
   font-family: "Playfair Display", serif;
   font-size: 16px;
-  color: white;
+  color: rgb(177, 67, 19);
 }
 
 *,
@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  background-color: #2f0e75;
+  background-image: url("https://cdn.hipwallpaper.com/i/39/58/FVs5eM.jpg");
   max-width: 1000px;
   margin: 0 auto;
 }
